@@ -10,11 +10,7 @@ export default function DashboardPage() {
   const { data: session, status } = useSession();
   const [links, setLinks] = useState<LinkItem[]>([]);
 
-  useEffect(() => {
-    if (status === "unauthenticated") {
-      signIn();
-    }
-  }, [status]);
+  // Middleware handles authentication, so we don't need manual redirect here
 
   useEffect(() => {
     if (status === "authenticated") {
