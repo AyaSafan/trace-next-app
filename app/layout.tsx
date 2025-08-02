@@ -3,8 +3,8 @@ import "./globals.css";
 import { Providers } from "./providers";
 
 export const metadata = {
-  title: "Your App",
-  description: "Your app description",
+  title: "LinkVault",
+  description: "LinkVault is a platform for storing and managing your links",
 };
 
 export default function RootLayout({
