@@ -33,3 +33,33 @@ export function editLink(createdAt: string, updatedFields: Partial<Omit<LinkItem
     });
     saveLinks(updatedLinks);
 }
+
+export function filterLinks(links: LinkItem[], searchQuery: string): LinkItem[] {
+    if (!searchQuery.trim()) return links;
+    
+    const query = searchQuery.toLowerCase().trim();
+    
+    return links.filter(link => {
+        // Search in title
+        if (link.title && link.title.toLowerCase().includes(query)) {
+            return true;
+        }
+        
+        // Search in tags
+        if (link.tags && link.tags.some(tag => tag.toLowerCase().includes(query))) {
+            return true;
+        }
+        
+        // Search in description
+        if (link.description && link.description.toLowerCase().includes(query)) {
+            return true;
+        }
+        
+        // Search in URL
+        if (link.url.toLowerCase().includes(query)) {
+            return true;
+        }
+        
+        return false;
+    });
+}
