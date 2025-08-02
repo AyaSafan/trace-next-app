@@ -22,3 +22,14 @@ export function deleteLink(createdAt: string): LinkItem[] {
     saveLinks(updatedLinks);
     return updatedLinks;
 }
+
+export function editLink(createdAt: string, updatedFields: Partial<Omit<LinkItem, "createdAt">>) {
+    const links = getLinks();
+    const updatedLinks = links.map(link => {
+        if (link.createdAt === createdAt) {
+            return { ...link, ...updatedFields, createdAt: link.createdAt };
+        }
+        return link;
+    });
+    saveLinks(updatedLinks);
+}

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { LinkItem, deleteLink } from "../lib/storage";
-import { ExternalLink, Trash2 } from "lucide-react";
+import { ExternalLink, Trash2 , Edit} from "lucide-react";
 
 type Props = {
   link: LinkItem;
@@ -33,13 +33,22 @@ export default function LinkCard({ link }: Props) {
           {link.title || link.url}
           <ExternalLink size={16} className="text-blue-400" />
         </a>
-        <button
-          onClick={handleDelete}
-          className="ml-2 p-1 rounded hover:bg-red-100 transition"
-          title="Delete link"
-        >
-          <Trash2 size={18} className="text-red-500" />
-        </button>
+        <div className="flex items-center gap-2">
+          <a
+            href={`/edit-link?id=${encodeURIComponent(link.createdAt)}`}
+            className="text-blue-600 hover:text-blue-800 transition"
+            title="Edit link"
+          >
+            <Edit size={20} />
+          </a>
+          <button
+            onClick={handleDelete}
+            className="text-blue-600 hover:text-blue-800 transition px-1"
+            title="Delete link"
+          >
+            <Trash2 size={20} />
+          </button>
+        </div>
       </div>
 
       {link.description && (
