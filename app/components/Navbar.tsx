@@ -2,26 +2,35 @@
 
 import Link from "next/link";
 import { signOut } from "next-auth/react";
+import { Link as LinkIcon, Plus, LogOut } from "lucide-react";
 
 export default function Navbar() {
   return (
-    <nav className="bg-gray-900 text-white px-6 py-4 shadow-md">
+    <nav className="px-6 py-4 shadow-md">
       <div className="max-w-6xl mx-auto flex justify-between items-center">
-        <Link href="/dashboard" className="text-xl font-bold">
-          LinkVault
+        
+        <Link href="/dashboard" className="text-2xl font-bold">
+         <span className="inline-flex items-center gap-2">
+           <LinkIcon size={24} />
+           LinkVault
+         </span>
         </Link>
+
         <div className="flex items-center gap-4">
           <Link
             href="/add-link"
-            className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded text-sm font-medium"
+            className="p-2"
+            title="Add Link"
           >
-            + Add Link
+            <Plus size={24} />
           </Link>
+
           <button
             onClick={() => signOut()}
-            className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded text-sm font-medium"
+            className="p-2"
+            title="Sign out"
           >
-            Sign out
+            <LogOut size={24} />
           </button>
         </div>
       </div>

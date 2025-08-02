@@ -30,13 +30,11 @@ export default function DashboardPage() {
       <Navbar />
 
       <div className="p-6 max-w-3xl mx-auto">
-        <h1 className="text-2xl font-bold mb-2">
+        <h1 className="text-2xl font-bold my-3">
           Welcome, {session.user?.name}!
         </h1>
-        <p className="text-gray-600 mb-6">Your email: {session.user?.email}</p>
 
         <div>
-          <h2 className="text-xl font-semibold mb-4">Saved Links</h2>
           {links.length === 0 ? (
             <p className="text-gray-500">No saved links yet.</p>
           ) : (

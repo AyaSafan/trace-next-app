@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { LinkItem, getLinks, saveLinks } from "@/app/lib/storage";
+import Navbar from "../components/Navbar";
 
 export default function AddLinkPage() {
   const [url, setUrl] = useState("");
@@ -34,6 +35,8 @@ export default function AddLinkPage() {
   };
 
   return (
+    <>
+    <Navbar />
     <div className="p-6 max-w-lg mx-auto">
       <h1 className="text-xl font-bold mb-4">Add a new link</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -68,12 +71,13 @@ export default function AddLinkPage() {
         />
         <button
           type="submit"
-          className="btn btn-primary w-full"
+          className="btn btn-neutral w-full"
           disabled={!url}
         >
           Add Link
         </button>
       </form>
     </div>
+    </>
   );
 }

@@ -15,3 +15,10 @@ export function getLinks(): LinkItem[] {
 export function saveLinks(links: LinkItem[]) {
     localStorage.setItem("links", JSON.stringify(links));
 }
+
+export function deleteLink(createdAt: string): LinkItem[] {
+    const links = getLinks();
+    const updatedLinks = links.filter(link => link.createdAt !== createdAt);
+    saveLinks(updatedLinks);
+    return updatedLinks;
+}
